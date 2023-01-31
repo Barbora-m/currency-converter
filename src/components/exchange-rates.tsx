@@ -4,6 +4,7 @@ import { Alert, CircularProgress } from "@mui/material";
 import { fetchRates } from "../api";
 
 import { RatesTable } from "./rates-table";
+import { CurrencyConverter } from "./currency-converter";
 
 export const ExchangeRates = () => {
   const { error, data, isLoading } = useQuery({
@@ -19,5 +20,10 @@ export const ExchangeRates = () => {
     return <CircularProgress />;
   }
 
-  return <RatesTable data={data} />;
+  return (
+    <>
+      <CurrencyConverter data={data} />
+      <RatesTable data={data} />
+    </>
+  );
 };
